@@ -2,5 +2,5 @@
     "name": "testetop/v1",
     "require": {
         "php": ">=8.1"
-    },
+    }
 }
