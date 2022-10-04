@@ -34,5 +34,5 @@ jobs:
         git_command="$(which git) diff main $($(which git) rev-parse HEAD) --name-only"
 
         for diff_file in $(git_command); do
-          $(tests/vendor/bin/phpcs --standard=${{ env.psr }} $diff_file);
+          eval "tests/vendor/bin/phpcs --standard=${{ env.psr }} $diff_file";
         done;
