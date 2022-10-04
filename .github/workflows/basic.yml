@@ -5,6 +5,7 @@ on:
     branches: 
       # - "main"
       - "beta"
+      - "test-bash"
   pull_request:
     branches:
       - "main"
