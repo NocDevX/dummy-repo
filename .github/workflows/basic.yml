@@ -28,6 +28,16 @@ jobs:
     - name: Instalar Dependências
       run: composer require squizlabs/php_codesniffer -q --no-interaction --no-progress
 
+    - name: Verificar nivelamento
+      run: |
+        git fetch --all -p
+        COMMITS_BEHIND=$(git rev-list --count $GITHUB_REF_NAME..origin/main);
+
+        if [[ $COMMITS_BEHIND -gt 0 ]]; then
+            echo "Branch desnivelada à master, $COMMITS_BEHIND commit(s) atrás."
+            exit 1;
+        fi
+
     - name: Verificar padrão de código
       run: |
         git fetch --all -p
