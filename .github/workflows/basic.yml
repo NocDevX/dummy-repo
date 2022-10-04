@@ -31,7 +31,7 @@ jobs:
     - name: Verificar padrão de código
       run: |
         git fetch --all -p
-        git_command="$(which git) diff origin/main $($(which git) rev-parse HEAD) --name-only"
+        git_command="$(which git) diff origin/main $GITHUB_REF_NAME --name-only"
 
         for diff_file in $($git_command); do
           eval "vendor/bin/phpcs --standard=${{ env.psr }} $diff_file";
