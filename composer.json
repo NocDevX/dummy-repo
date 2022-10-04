@@ -5,5 +5,10 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "*"
+    },
+    "scripts": {
+        "psr-check": [
+            "vendor/bin/phpcs"
+        ]
     }
 }

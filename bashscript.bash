@@ -1,4 +1,6 @@
-branch_ref= command git rev-parse --abrev-ref HEAD;
-git_command="git fetch --all -p -q | git diff main ${branc_ref} --name-only"
+eval "git fetch --all -p -q";
+git_command="git diff main $(git rev-parse HEAD) --name-only";
 
-eval $git_command;
+for diff_file in $($git_command); do
+    eval "vendor/bin/phpcs $diff_file";
+done
