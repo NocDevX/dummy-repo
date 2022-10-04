@@ -1,6 +1,9 @@
 {
-    "name": "testetop/v1",
+    "name": "test/top",
     "require": {
         "php": ">=8.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*"
     }
 }
