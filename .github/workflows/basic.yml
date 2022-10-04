@@ -26,7 +26,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Instalar Dependências
-      run: composer require squizlabs/php_codesniffer --working-dir tests -q --no-interaction --no-progress
+      run: composer require squizlabs/php_codesniffer -q --no-interaction --no-progress
 
     - name: Verificar padrão de código
       run: |
@@ -34,5 +34,5 @@ jobs:
         git_command="$(which git) diff main $($(which git) rev-parse HEAD) --name-only"
 
         for diff_file in $($git_command); do
-          eval "tests/vendor/bin/phpcs --standard=${{ env.psr }} $diff_file";
+          eval "vendor/bin/phpcs --standard=${{ env.psr }} $diff_file";
         done;
