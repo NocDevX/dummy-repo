@@ -7,8 +7,8 @@
 # done
 
 # COMMITS_BEHIND=$(git rev-list --count $(git rev-parse HEAD)..origin/main);
-COMMITS_BEHIND=$(git rev-list --count origin/test-bash..origin/main);
-COMMITS_BEHIND=$(git rev-list --count origin/test-bash..origin/main);
+# COMMITS_BEHIND=$(git rev-list --count origin/test-bash..origin/main);
+COMMITS_BEHIND=$(git rev-list --count --right-only test-bash..origin/main);
 echo $COMMITS_BEHIND;
 
 if [[ $COMMITS_BEHIND -gt 0 ]]; then
