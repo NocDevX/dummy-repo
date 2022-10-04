@@ -31,13 +31,12 @@ jobs:
     - name: Verificar nivelamento
       run: |
         git fetch --all -p
-        COMMITS_BEHIND=$(git rev-list --count origin/$GITHUB_REF_NAME origin/main);
+        COMMITS_BEHIND=$(git rev-list --count origin/test-bash origin/main);
 
         eval git branch
         echo $GITHUB_REF_NAME
 
         if [[ $COMMITS_BEHIND -gt 0 ]]; then
-            echo $GITHUB_REF_NAME
             echo "Branch desnivelada à master, $COMMITS_BEHIND commit(s) atrás."
             exit 1;
         fi
