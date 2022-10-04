@@ -33,6 +33,6 @@ jobs:
         git fetch --all -p
         git_command="$(which git) diff main $($(which git) rev-parse HEAD) --name-only"
 
-        for diff_file in $(git_command); do
+        for diff_file in $($git_command); do
           eval "tests/vendor/bin/phpcs --standard=${{ env.psr }} $diff_file";
         done;
