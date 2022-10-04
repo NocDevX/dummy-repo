@@ -34,6 +34,7 @@ jobs:
         COMMITS_BEHIND=$(git rev-list --count $GITHUB_REF_NAME..origin/main);
 
         if [[ $COMMITS_BEHIND -gt 0 ]]; then
+            echo $GITHUB_REF_NAME
             echo "Branch desnivelada à master, $COMMITS_BEHIND commit(s) atrás."
             exit 1;
         fi
