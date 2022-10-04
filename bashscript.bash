@@ -8,6 +8,8 @@
 
 # COMMITS_BEHIND=$(git rev-list --count $(git rev-parse HEAD)..origin/main);
 COMMITS_BEHIND=$(git rev-list --count origin/test-bash..origin/main);
+COMMITS_BEHIND=$(git rev-list --count origin/test-bash..origin/main);
+echo $COMMITS_BEHIND;
 
 if [[ $COMMITS_BEHIND -gt 0 ]]; then
     echo "Branch desnivelada à master, $COMMITS_BEHIND commit(s) atrás."
