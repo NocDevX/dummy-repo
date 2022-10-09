@@ -12,7 +12,7 @@ COMMITS_BEHIND=$(git rev-list --count --right-only test-bash..origin/main);
 echo $COMMITS_BEHIND;
 
 if [[ $COMMITS_BEHIND -gt 0 ]]; then
-    echo "Branch desnivelada à master, $COMMITS_BEHIND commit(s) atrás."
+    echo "Branch desnivelada à main, $COMMITS_BEHIND commit(s) atrás."
     exit 1;
 else
     echo "Nivelada";
