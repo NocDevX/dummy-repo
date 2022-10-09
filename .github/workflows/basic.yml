@@ -25,7 +25,7 @@ jobs:
         php-version: ${{ env.php-version }}
     - uses: actions/checkout@v3
       with:
-        fetch-depth: 10
+        fetch-depth: 0
 
     - name: Instalar Dependências
       run: composer require squizlabs/php_codesniffer -q --no-interaction --no-progress
