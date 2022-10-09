@@ -32,7 +32,6 @@ jobs:
 
     - name: Verificar nivelamento
       run: |
-        git fetch --all -p
         COMMITS_BEHIND=$(git rev-list --count $GITHUB_REF_NAME..origin/main);
 
         if [[ $COMMITS_BEHIND -gt 0 ]]; then
