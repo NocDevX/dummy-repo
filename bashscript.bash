@@ -8,8 +8,9 @@
 
 # COMMITS_BEHIND=$(git rev-list --count $(git rev-parse HEAD)..origin/main);
 # COMMITS_BEHIND=$(git rev-list --count origin/test-bash..origin/main);
-COMMITS_BEHIND=$(git rev-list --count --left-only origin/main..@);
-echo $COMMITS_BEHIND;
+COMMITS_BEHIND=$(git rev-list --count --right-only test-bash..origin/main);
+
+eval git rev-list --count --left-right test-bash..origin/main;
 
 if [[ $COMMITS_BEHIND -gt 0 ]]; then
     echo "Branch desnivelada à main, $COMMITS_BEHIND commit(s) atrás."
@@ -17,5 +18,3 @@ if [[ $COMMITS_BEHIND -gt 0 ]]; then
 else
     echo "Nivelada";
 fi
-
-eval git branch;
