@@ -24,6 +24,8 @@ jobs:
       with:
         php-version: ${{ env.php-version }}
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Instalar Dependências
       run: composer require squizlabs/php_codesniffer -q --no-interaction --no-progress
@@ -31,10 +33,10 @@ jobs:
     - name: Verificar nivelamento
       run: |
         git fetch --all -p
-        COMMITS_BEHIND=$(git rev-list --count -n 1 --reverse $GITHUB_REF_NAME..origin/main);
+        COMMITS_BEHIND=$(git rev-list --count $GITHUB_REF_NAME..origin/main);
 
         if [[ $COMMITS_BEHIND -gt 0 ]]; then
-            echo "Branch desnivelada, $COMMITS_BEHIND commit(s) atrás da main1."
+            echo "Branch desnivelada, $COMMITS_BEHIND commit(s) atrás da main."
             exit 1;
         fi
     - name: Verificar padrão de código
