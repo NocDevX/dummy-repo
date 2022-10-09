@@ -40,8 +40,8 @@ jobs:
         fi
     - name: Verificar padrão de código
       run: |
-        git_command="$(which git) diff origin/main $GITHUB_REF_NAME --name-only --diff-filter=d"
+        GIT_COMMAND="git diff origin/main $GITHUB_REF_NAME --name-only --diff-filter=d"
 
-        for diff_file in $($git_command); do
-          eval "vendor/bin/phpcs --standard=${{ env.psr }} $diff_file";
+        for DIFF_FILE in $($GIT_COMMAND); do
+          eval "vendor/bin/phpcs --standard=${{ env.psr }} $DIFF_FILE";
         done;
