@@ -30,16 +30,14 @@ jobs:
 
     - name: Verificar nivelamento
       run: |
-        git fetch --all -p
         COMMITS_BEHIND=$(git rev-list --count -n 1 --reverse $GITHUB_REF_NAME..origin/main);
 
         if [[ $COMMITS_BEHIND -gt 0 ]]; then
-            echo "Branch desnivelada à main, $COMMITS_BEHIND commit(s) atrás."
+            echo "Branch desnivelada, $COMMITS_BEHIND commit(s) atrás da main1."
             exit 1;
         fi
     - name: Verificar padrão de código
       run: |
-        git fetch --all -p
         git_command="$(which git) diff origin/main $GITHUB_REF_NAME --name-only --diff-filter=d"
 
         for diff_file in $($git_command); do
